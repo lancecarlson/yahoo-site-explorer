@@ -11,6 +11,6 @@ module Yahoo
 end
 
 
-%w(inlinks pages version).each do |file|
+%w(inlinks pages service version).each do |file|
   require File.join(File.dirname(__FILE__), "se", file)
 end
