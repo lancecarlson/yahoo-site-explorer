@@ -20,12 +20,12 @@ module Yahoo
         "#{@service_path}?#{@query_string}"
       end
       
-      def result_body
+      def response_body
         open(path).readlines.join
       end
       
       def results
-        Yahoo::SE::Result.new(result_body)
+        Yahoo::SE::Response.new(response_body)
       end
     end
   end

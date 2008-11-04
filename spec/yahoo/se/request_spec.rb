@@ -12,7 +12,7 @@ describe Yahoo::SE::Request do
       Yahoo::SE.application_id = "123"
       @result = mock(Yahoo::SE::Result)
       @il_request = Yahoo::SE::Request.new(Yahoo::SE::Inlinks::SERVICE_PATH, :query => "http://www.rubyskills.com")
-      @json_file = open(fixtures_path("yahoo/se/rubyskills_backlinks.json"))
+      @json_file = fixture("yahoo/se/rubyskills_backlinks.json")
     end
     
     it "should form a valid request to inlink data" do
