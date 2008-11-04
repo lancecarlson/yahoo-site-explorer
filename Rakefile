@@ -27,8 +27,8 @@ spec = Gem::Specification.new do |s|
   s.homepage = HOMEPAGE
   s.has_rdoc = true
 
-  s.add_dependency('rspec', '>= 1.1.4')
-  s.add_dependency('rake', '>= 0.8.1')
+  s.add_dependency('rspec')
+  s.add_dependency('rake')
 
   s.files = [ "Rakefile", "README" ]
   dist_dirs.each do |dir|
