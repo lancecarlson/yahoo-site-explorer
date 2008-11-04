@@ -14,6 +14,7 @@ describe Yahoo::SE::Request do
       @il_request = Yahoo::SE::Request.new(Yahoo::SE::Inlinks::SERVICE_PATH, :query => "http://erbmicha.com")
       @pages_request = Yahoo::SE::Request.new(Yahoo::SE::Pages::SERVICE_PATH, :query => "http://erbmicha.com")
       @ping_request = Yahoo::SE::Request.new(Yahoo::SE::Ping::SERVICE_PATH, :sitemap => "http://erbmicha.com")
+      @update_notification_request = Yahoo::SE::Request.new(Yahoo::SE::UpdateNotification::SERVICE_PATH, :url => "http://erbmicha.com")
       @json_bl_file = mock(File)
       @json_bl_file.stub!(:readlines).and_return(@json_bl_file)
       @json_bl_file.stub!(:join).and_return(fixture("erbmicha.com_backlinks.json"))
@@ -40,6 +41,11 @@ describe Yahoo::SE::Request do
     it "should form a valid request to ping a site" do
       @ping_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/ping?appid=123&sitemap=http://erbmicha.com&output=json").and_return(@json_ping_file)
       @ping_request.response
+    end
+    
+    it "should form a valid request to the update notification service" do
+      @update_notification_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=123&url=http://erbmicha.com&output=json").and_return(@json_ping_file)
+      @update_notification_request.response
     end
   end
 end
