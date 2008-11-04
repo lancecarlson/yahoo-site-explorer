@@ -5,7 +5,7 @@ describe Yahoo::SE::Response do
     @response = Yahoo::SE::Response.new(fixture("yahoo/se/erbmicha.com_backlinks.json"))
   end
   
-  it "should " do
+  it "should list 100 result objects" do
     @response.results.should == "test"
   end
 end
