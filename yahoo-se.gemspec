@@ -1,10 +1,8 @@
-require 'lib/yahoo-se/version'
-
 dist_dirs = [ "lib", "spec" ]
 
 Gem::Specification.new do |s|
   s.name = "yahoo-se"
-  s.version = Yahoo::SE::VERSION
+  s.version = "0.0.2"
   s.date = "2008-11-03"
   s.summary = "Ruby gem for yahoo site explorer"
   s.email = "info@rubyskills.com"
