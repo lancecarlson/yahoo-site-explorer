@@ -14,7 +14,9 @@ module Yahoo
       end
       
       def results
-        self.to_json["ResultSet"]["Result"]
+        self.to_json["ResultSet"]["Result"].map do |result_hash|
+          Yahoo::SE::Result.new(result_hash)
+        end
       end
       
       def to_json

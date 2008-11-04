@@ -5,8 +5,16 @@ module Yahoo
         @hash = hash
       end
       
+      def title
+        @hash["Title"]
+      end
+      
       def url
-        hash["Url"]
+        @hash["Url"]
+      end
+      
+      def click_url
+        @hash["ClickUrl"]
       end
     end
   end

@@ -6,6 +6,6 @@ describe Yahoo::SE::Response do
   end
   
   it "should list 100 result objects" do
-    @response.results.should == "test"
+    @response.results.size.should equal(100)
   end
 end
