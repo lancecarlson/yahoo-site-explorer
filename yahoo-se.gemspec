@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "yahoo-se"
-  s.version = "0.0.3"
+  s.version = "0.1.1"
   s.date = "2008-11-03"
   s.summary = "Ruby gem for yahoo site explorer"
   s.email = "info@rubyskills.com"
