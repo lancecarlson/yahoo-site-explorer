@@ -12,7 +12,17 @@ describe Yahoo::SE::Inlinks do
   
   it "should return 100 inlink results" do
     Yahoo::SE.application_id = "123"
-    Yahoo::SE::Request.should_receive(:new).with("http://search.yahooapis.com/SiteExplorerService/V1/inlinkData", {:results=>100, :query=>"rubyskills.com"}).and_return(@request)
-    Yahoo::SE.inlinks("rubyskills.com", :results => 100)
+    Yahoo::SE::Request.should_receive(:new).with("http://search.yahooapis.com/SiteExplorerService/V1/inlinkData", {:results=>100, :query=>"http://rubyskills.com", :start => 1}).and_return(@request)
+    Yahoo::SE.inlinks("http://rubyskills.com", :results => 100).results
+  end
+  
+  it "should return the next 75 inlink results" do
+    Yahoo::SE.application_id = "123"
+    Yahoo::SE::Request.should_receive(:new).with("http://search.yahooapis.com/SiteExplorerService/V1/inlinkData", {:results=>75, :query=>"http://rubyskills.com", :start => 1}).and_return(@request)
+    inlinks = Yahoo::SE.inlinks("http://rubyskills.com", :results => 75)
+    inlinks.results
+    Yahoo::SE::Request.should_receive(:new).with("http://search.yahooapis.com/SiteExplorerService/V1/inlinkData", {:results=>75, :query=>"http://rubyskills.com", :start => 76}).and_return(@request)
+    inlinks.next.should == inlinks
+    inlinks.results
   end
 end

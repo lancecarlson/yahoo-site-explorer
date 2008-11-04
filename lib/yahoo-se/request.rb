@@ -25,7 +25,7 @@ module Yahoo
       
       # The response object of the request
       def response
-        Yahoo::SE::Response.new(response_body)
+        @response = @response ||= Yahoo::SE::Response.new(response_body)
       end
       
       # The response body of the request
