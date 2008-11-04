@@ -28,6 +28,7 @@ module Yahoo
       
       # Displays the results for inlinks data
       def results
+        raise ApplicationIDNotSet if Yahoo::SE.application_id.nil?
         @request = Yahoo::SE::Request.new(Yahoo::SE::Inlinks::SERVICE_PATH, @options)
         @request.results
       end

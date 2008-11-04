@@ -28,6 +28,7 @@ module Yahoo
       
       # Displays the results for pages data
       def results
+        raise ApplicationIDNotSet if Yahoo::SE.application_id.nil?
         @request = Yahoo::SE::Request.new(Yahoo::SE::Pages::SERVICE_PATH, @options)
         @request.results
       end

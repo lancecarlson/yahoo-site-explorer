@@ -22,6 +22,7 @@ module Yahoo
       end
       
       def response
+        raise ApplicationIDNotSet if Yahoo::SE.application_id.nil?
         Yahoo::SE::Request.new(Yahoo::SE::UpdateNotification::SERVICE_PATH, @options).response
       end
     end
