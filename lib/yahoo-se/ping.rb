@@ -1,16 +1,23 @@
 module Yahoo
   module SE
-    def self.ping(domain)
-      Yahoo::SE::Ping.new(domain)
+    # Allows you to notify Yahoo! of changes to your site. No appid required
+    # 
+    # ping = Yahoo::SE.pages("http://rubyskills.com")
+    # 
+    # ping.response
+    # 
+    # sitemap: The URL of the page to be submitted, or the URL of a feed containing site data.
+    def self.ping(sitemap)
+      Yahoo::SE::Ping.new(sitemap)
     end
     
     class Ping
       SERVICE_PATH = "#{Yahoo::SE::SERVICE_PATH}/ping"
       
-      def initialize(domain)
-        @domain = domain
+      def initialize(sitemap)
+        @sitemap = sitemap
         @options = {}
-        @options[:sitemap] = domain
+        @options[:sitemap] = sitemap
         response
       end
       
