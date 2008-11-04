@@ -1,3 +1,23 @@
+= Yahoo Site Explorer Gem
+
+Yahoo Site Explorer API integration.
+
+== Installation
+
+gem sources -a http://gems.github.com
+
 gem install yahoo-se
 
-see: http://developer.yahoo.com/search/siteexplorer for more details.
+== Usage
+
+backlinks = Yahoo::SE.inlinks("http://rubyskills.com", :results => 100)
+ 
+backlinks.results
+
+page_data = Yahoo::SE.pages("http://rubyskills.com", :results => 100)
+
+page_data.results
+
+See Yahoo::SE for more info
+
+see: http://developer.yahoo.com/search/siteexplorer for more details on the Yahoo API.

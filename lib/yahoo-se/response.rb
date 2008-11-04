@@ -5,14 +5,17 @@ module Yahoo
         @body = response_body
       end
       
+      # The number of URLs returned. This may be lower than the number of results requested if there were fewer total results available.
       def total_results
         self.to_json["ResultSet"]["totalResultsReturned"].to_i
       end
     
+      # The number of URLs in the database that link to the domain or page.
       def total_results_available
         self.to_json["ResultSet"]["totalResultsAvailable"].to_i
       end
       
+      # The result objects returned from the request
       def results
         self.to_json["ResultSet"]["Result"].map do |result_hash|
           Yahoo::SE::Result.new(result_hash)

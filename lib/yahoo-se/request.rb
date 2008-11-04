@@ -4,6 +4,8 @@ require "json"
 module Yahoo
   module SE
     class Request
+      
+      # Converts a hash to a query string
       def self.hash_to_query(hash)
         hash.map {|key, value| "#{key}=#{value}"}.join("&")
       end
@@ -16,18 +18,22 @@ module Yahoo
         @query_string = self.class.hash_to_query(@options)
       end
     
+      # The API URL call
       def path
         "#{@service_path}?#{@query_string}"
       end
       
+      # The response object of the request
       def response
         Yahoo::SE::Response.new(response_body)
       end
       
+      # The response body of the request
       def response_body
         open(path).readlines.join
       end
       
+      # The results from the response object
       def results
         response.results
       end
