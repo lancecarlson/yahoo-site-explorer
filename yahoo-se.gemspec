@@ -30,5 +30,5 @@ Gem::Specification.new do |s|
     ]
   s.require_path = "lib"
   # s.add_dependency("activesupport", [">= 2.1.0"])
-  s.has_rdoc = false
+  s.has_rdoc = true
 end
