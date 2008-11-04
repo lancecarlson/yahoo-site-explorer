@@ -12,6 +12,6 @@ module Yahoo
 end
 
 
-%w(inlinks pages request response result version ping).each do |file|
+%w(inlinks pages request response result version ping update_notification).each do |file|
   require File.join(File.dirname(__FILE__), "yahoo-se", file)
 end
