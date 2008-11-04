@@ -2,10 +2,10 @@ Gem::Specification.new do |s|
   s.name = "yahoo-se"
   s.version = "1.0.0"
   s.date = "2008-11-03"
-  s.summary = "Ruby gem for yahoo site explorer"
+  s.summary = "Ruby gem for Yahoo! Site Explorer"
   s.email = "info@rubyskills.com"
   s.homepage = "http://www.rubyskills.com"
-  s.authors = ["Lance Carlson"]
+  s.authors = ["Lance Carlson", "Michael Erb"]
   s.files = [
     'LICENSE',
     'Rakefile',
@@ -33,6 +33,5 @@ Gem::Specification.new do |s|
     'spec/yahoo-se_spec.rb'
     ]
   s.require_path = "lib"
-  # s.add_dependency("activesupport", [">= 2.1.0"])
   s.has_rdoc = true
 end
