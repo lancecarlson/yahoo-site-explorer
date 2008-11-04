@@ -1,5 +1,7 @@
 require 'lib/yahoo-se/version'
 
+dist_dirs = [ "lib", "spec" ]
+
 Gem::Specification.new do |s|
   s.name = "yahoo-se"
   s.version = Yahoo::SE::VERSION
@@ -8,7 +10,10 @@ Gem::Specification.new do |s|
   s.email = "info@rubyskills.com"
   s.homepage = "http://www.rubyskills.com"
   s.authors = ["Lance Carlson"]
-  s.files = ['bossman.gemspec', 'lib/yahoo-se.rb', 'README', 'LICENSE']
+  s.files = ['yahoo-se.gemspec', 'README', 'LICENSE']
+  dist_dirs.each do |dir|
+    s.files = s.files + Dir.glob("#{dir}/**/*")
+  end
   # s.add_dependency("activesupport", [">= 2.1.0"])
   s.has_rdoc = false
 end

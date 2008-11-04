@@ -1,3 +1,10 @@
+= Yahoo Site Explorer Gem
+
+Yahoo Site Explorer API integration.
+
+== Installation
+
+gem sources -a http://gems.github.com
 gem install yahoo-se
 
 see: http://developer.yahoo.com/search/siteexplorer for more details.
