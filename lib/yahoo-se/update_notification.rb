@@ -1,16 +1,23 @@
 module Yahoo
   module SE
-    def self.update_notification(domain)
-      Yahoo::SE::UpdateNotification.new(domain)
+    # The Update Notification service allows you to notify Yahoo! when your site changes. You may notify us about a single page, or a set of pages that need attention.
+    # 
+    # update_notification = Yahoo::SE.update_notification("http://rubyskills.com")
+    # 
+    # page_data.response
+    #
+    # url: The URL of the page to be submitted, or the URL of a feed containing site data.
+    def self.update_notification(url)
+      Yahoo::SE::UpdateNotification.new(url)
     end
     
     class UpdateNotification
       SERVICE_PATH = "#{Yahoo::SE::SERVICE_PATH}/updateNotification"
       
-      def initialize(domain)
-        @domain = domain
+      def initialize(url)
+        @url = url
         @options = {}
-        @options[:url] = domain
+        @options[:url] = url
         response
       end
       

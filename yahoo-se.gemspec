@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "yahoo-se"
-  s.version = "0.1.1"
+  s.version = "1.0.0"
   s.date = "2008-11-03"
   s.summary = "Ruby gem for yahoo site explorer"
   s.email = "info@rubyskills.com"
@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
     'lib/yahoo-se/request.rb',
     'lib/yahoo-se/response.rb',
     'lib/yahoo-se/result.rb',
+    'lib/yahoo-se/update_notification.rb',
     'lib/yahoo-se/version.rb',
     'spec/fixtures/erbmicha.com_backlinks.json',
     'spec/fixtures/erbmicha.com_pages.json', 
@@ -28,6 +29,7 @@ Gem::Specification.new do |s|
     'spec/yahoo-se/request_spec.rb',
     'spec/yahoo-se/response_spec.rb',
     'spec/yahoo-se/result_spec.rb',
+    'spec/yahoo-se/update_notification_spec.rb',
     'spec/yahoo-se_spec.rb'
     ]
   s.require_path = "lib"

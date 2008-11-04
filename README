@@ -20,6 +20,14 @@ page_data = Yahoo::SE.pages("http://rubyskills.com", :results => 100)
 
 page_data.results
 
+ping = Yahoo::SE.ping("http://rubyskills.com")
+
+ping.response
+
+update_notification = Yahoo::SE.update_notification("http://rubyskills.com")
+
+update_notification.response
+
 See Yahoo::SE for more info
 
 see: http://developer.yahoo.com/search/siteexplorer for more details on the Yahoo API.
