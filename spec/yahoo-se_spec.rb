@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), "..", "spec_helper")
+require File.join(File.dirname(__FILE__), "spec_helper")
 
 describe Yahoo::SE do
   it "should have an application id accessor" do
