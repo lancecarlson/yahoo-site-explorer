@@ -3,6 +3,7 @@ module Yahoo
     # Shows a list of all pages belonging to a domain in the Yahoo! index
     # 
     # page_data = Yahoo::SE.pages("http://rubyskills.com", :results => 100)
+    # 
     # page_data.results 
     def self.pages(domain, options={})
       Yahoo::SE::Pages.new(domain, options)

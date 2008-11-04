@@ -3,6 +3,7 @@ module Yahoo
     # Shows the pages from other sites linking in to a page.
     # 
     # backlinks = Yahoo::SE.inlinks("http://rubyskills.com", :results => 100)
+    # 
     # backlinks.results
     def self.inlinks(domain, options={})
       Yahoo::SE::Inlinks.new(domain, options)
