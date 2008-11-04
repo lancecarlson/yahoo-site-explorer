@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "yahoo-se"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
   s.date = "2008-11-03"
   s.summary = "Ruby gem for yahoo site explorer"
   s.email = "info@rubyskills.com"
@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
     'lib/yahoo-se.rb', 
     'lib/yahoo-se/inlinks.rb',
     'lib/yahoo-se/pages.rb',
+    'lib/yahoo-se/ping.rb',
     'lib/yahoo-se/request.rb',
     'lib/yahoo-se/response.rb',
     'lib/yahoo-se/result.rb',
@@ -23,6 +24,7 @@ Gem::Specification.new do |s|
     'spec/spec_helper.rb',
     'spec/yahoo-se/inlinks_spec.rb',
     'spec/yahoo-se/pages_spec.rb',
+    'spec/yahoo-se/ping_spec.rb',
     'spec/yahoo-se/request_spec.rb',
     'spec/yahoo-se/response_spec.rb',
     'spec/yahoo-se/result_spec.rb',

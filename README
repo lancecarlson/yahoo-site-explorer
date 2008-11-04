@@ -10,6 +10,8 @@ gem install yahoo-se
 
 == Usage
 
+Yahoo::SE.application_id = "YOUR_YAHOO_APPLICATION_ID"
+
 backlinks = Yahoo::SE.inlinks("http://rubyskills.com", :results => 100)
  
 backlinks.results
