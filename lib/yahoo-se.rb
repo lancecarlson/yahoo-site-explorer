@@ -13,5 +13,5 @@ end
 
 
 %w(inlinks pages request response result version).each do |file|
-  require File.join(File.dirname(__FILE__), "se", file)
+  require File.join(File.dirname(__FILE__), "yahoo-se", file)
 end

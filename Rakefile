@@ -5,7 +5,7 @@ require 'rake/rdoctask'
 require 'rake/testtask'
 require 'spec/rake/spectask'
 
-require 'lib/yahoo/se/version'
+require 'lib/yahoo-se/version'
 
 NAME = "yahoo-se"
 AUTHOR = "Lance Carlson"

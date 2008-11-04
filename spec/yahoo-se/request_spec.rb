@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), "..", "..", "spec_helper")
+require File.join(File.dirname(__FILE__), "..", "spec_helper")
 
 describe Yahoo::SE::Request do
   describe "hash_to_query" do
@@ -14,7 +14,7 @@ describe Yahoo::SE::Request do
       @il_request = Yahoo::SE::Request.new(Yahoo::SE::Inlinks::SERVICE_PATH, :query => "http://www.rubyskills.com")
       @json_file = mock(File)
       @json_file.stub!(:readlines).and_return(@json_file)
-      @json_file.stub!(:join).and_return(fixture("yahoo/se/erbmicha.com_backlinks.json"))
+      @json_file.stub!(:join).and_return(fixture("erbmicha.com_backlinks.json"))
     end
     
     it "should form a valid request to inlink data" do

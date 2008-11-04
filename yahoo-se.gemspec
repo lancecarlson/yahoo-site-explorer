@@ -1,4 +1,4 @@
-require 'lib/yahoo/site_explorer/version'
+require 'lib/yahoo-se/version'
 
 Gem::Specification.new do |s|
   s.name = "yahoo-se"
@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.email = "info@rubyskills.com"
   s.homepage = "http://www.rubyskills.com"
   s.authors = ["Lance Carlson"]
-  s.files = ['bossman.gemspec', 'lib/yahoo/se.rb', 'README', 'LICENSE']
+  s.files = ['bossman.gemspec', 'lib/yahoo-se.rb', 'README', 'LICENSE']
   # s.add_dependency("activesupport", [">= 2.1.0"])
   s.has_rdoc = false
 end
