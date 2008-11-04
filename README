@@ -10,23 +10,26 @@ gem install yahoo-se
 
 == Usage
 
-Yahoo::SE.application_id = "YOUR_YAHOO_APPLICATION_ID"
+	Yahoo::SE.application_id = "YOUR_YAHOO_APPLICATION_ID"
+	
+	# Inlink Service
+	backlinks = Yahoo::SE.inlinks("http://rubyskills.com", :results => 100)
+	backlinks.results
+	backlinks.next
+	backlinks.results
 
-backlinks = Yahoo::SE.inlinks("http://rubyskills.com", :results => 100)
- 
-backlinks.results
+	# Page Service
+	page_data = Yahoo::SE.pages("http://rubyskills.com", :results => 100)
+	page_data.results
+	page_data.next.results
+	
+	# Ping Service
+	ping = Yahoo::SE.ping("http://rubyskills.com")
+	ping.response
 
-page_data = Yahoo::SE.pages("http://rubyskills.com", :results => 100)
-
-page_data.results
-
-ping = Yahoo::SE.ping("http://rubyskills.com")
-
-ping.response
-
-update_notification = Yahoo::SE.update_notification("http://rubyskills.com")
-
-update_notification.response
+	# Update Notification Service
+	update_notification = Yahoo::SE.update_notification("http://rubyskills.com")
+	update_notification.response
 
 See Yahoo::SE for more info
 
