@@ -11,8 +11,8 @@ NAME = "yahoo-se"
 AUTHOR = "Lance Carlson"
 EMAIL = "info@rubyskills.com"
 HOMEPAGE = "http://www.rubyskills.com"
-SUMMARY = "Yahoo Site Explorer Gem"
-DESCRIPTION = "Ruby gem for the Yahoo Site Explorer API"
+SUMMARY = "Yahoo! Site Explorer Gem"
+DESCRIPTION = "Ruby gem for the Yahoo! Site Explorer API"
 
 dist_dirs = [ "lib", "spec" ]
 
@@ -42,7 +42,7 @@ end
 
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
-  rdoc.title    = 'Yahoo Site Explorer'
+  rdoc.title    = 'Yahoo! Site Explorer'
   rdoc.options << '--line-numbers' << '--inline-source' << '-A cattr_accessor=object'
   rdoc.options << '--charset' << 'utf-8'
   rdoc.rdoc_files.include('README')
