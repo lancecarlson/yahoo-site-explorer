@@ -7,16 +7,16 @@ module Yahoo
     # page_data.results 
     # 
     # page_data.next
-    # 
-    # page_data.results
     def self.pages(domain, options={})
       Yahoo::SE::Pages.new(domain, options)
     end
     
     class Pages
+      include Yahoo::SE::Paginator
       SERVICE_PATH = "#{Yahoo::SE::SERVICE_PATH}/pageData"
       
       attr_reader :request
+      attr_accessor :options
       
       def initialize(domain, options)
         @domain = domain
@@ -31,28 +31,6 @@ module Yahoo
         raise ApplicationIDNotSet if Yahoo::SE.application_id.nil?
         @request = Yahoo::SE::Request.new(Yahoo::SE::Pages::SERVICE_PATH, @options)
         @results = @request.results
-      end
-      
-      # The response object from the request
-      def response
-        raise "Must send a request before you can get a response. Run the results method first!" if @request.nil?
-        @response = @request.response
-      end
-      
-      # Reset the start option to the next results
-      def next
-        @options[:start] = @options[:start] + @options[:results]
-        @options[:results] = response.total_results_available - @options[:start] if last?
-        results
-      end
-      
-      def last?
-        (@options[:start] + @options[:results]) >= response.total_results_available
-      end
-      
-      def method_missing(method, *args)
-        results
-        response.send(method, *args)
       end
     end
   end

@@ -7,6 +7,14 @@ describe Yahoo::SE::Pages do
     @request = mock(Yahoo::SE::Request, :results => [@result1], :response => @response)
   end
   
+  describe "Class" do
+    it "should list all of the results for a given page request" do
+      pages = Yahoo::SE.pages("http://erbmicha.com")
+      results = Yahoo::SE.all(pages)
+      results.length.should == 303
+    end
+  end
+  
   it "should have the service path for the pages service" do
     Yahoo::SE::Pages::SERVICE_PATH.should == "http://search.yahooapis.com/SiteExplorerService/V1/pageData"
   end
@@ -30,6 +38,8 @@ describe Yahoo::SE::Pages do
   it "should return the total results from the response" do
     Yahoo::SE.application_id = "123"
     Yahoo::SE::Request.should_receive(:new).with("http://search.yahooapis.com/SiteExplorerService/V1/pageData", {:results=>100, :start=>1, :query=>"http://rubyskills.com"}).and_return(@request)
-    Yahoo::SE.pages("http://rubyskills.com", :results => 100).total_results_available.should == 120
+    pages = Yahoo::SE.pages("http://rubyskills.com", :results => 100)
+    pages.results
+    pages.total_results_available.should == 120
   end
 end

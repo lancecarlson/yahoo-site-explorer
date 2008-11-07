@@ -17,8 +17,12 @@ module Yahoo
       
       # The result objects returned from the request
       def results
-        self.to_json["ResultSet"]["Result"].map do |result_hash|
-          Yahoo::SE::Result.new(result_hash)
+        begin
+          self.to_json["ResultSet"]["Result"].map do |result_hash|
+            Yahoo::SE::Result.new(result_hash)
+          end
+        rescue
+          []
         end
       end
       

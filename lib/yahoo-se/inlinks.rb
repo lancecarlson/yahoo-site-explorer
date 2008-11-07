@@ -7,16 +7,16 @@ module Yahoo
     # backlinks.results
     # 
     # backlinks.next
-    # 
-    # backlinks.results
     def self.inlinks(domain, options={})
       Yahoo::SE::Inlinks.new(domain, options)
     end
     
     class Inlinks
+      include Yahoo::SE::Paginator
       SERVICE_PATH = "#{Yahoo::SE::SERVICE_PATH}/inlinkData"
       
       attr_reader :request
+      attr_accessor :options
       
       def initialize(domain, options)
         @domain = domain
@@ -30,18 +30,7 @@ module Yahoo
       def results
         raise ApplicationIDNotSet if Yahoo::SE.application_id.nil?
         @request = Yahoo::SE::Request.new(Yahoo::SE::Inlinks::SERVICE_PATH, @options)
-        @request.results
-      end
-      
-      # The response object from the request
-      def response
-        @request.response
-      end
-      
-      # Reset the start option to the next results
-      def next
-        @options[:start] = @options[:start] + @options[:results]
-        self
+        @results = @request.results
       end
     end
   end
