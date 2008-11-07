@@ -29,13 +29,13 @@ module Yahoo
       # Displays the results for pages data
       def results
         raise ApplicationIDNotSet if Yahoo::SE.application_id.nil?
-        @request = @request ||= Yahoo::SE::Request.new(Yahoo::SE::Pages::SERVICE_PATH, @options)
-        @request.results
+        @request = Yahoo::SE::Request.new(Yahoo::SE::Pages::SERVICE_PATH, @options)
+        @results = @request.results
       end
       
       # The response object from the request
       def response
-        raise "Must send a request before you can get a response" if @request.nil?
+        raise "Must send a request before you can get a response. Run the results method first!" if @request.nil?
         @response = @request.response
       end
       
@@ -43,7 +43,7 @@ module Yahoo
       def next
         @options[:start] = @options[:start] + @options[:results]
         @options[:results] = response.total_results_available - @options[:start] if last?
-        Yahoo::SE::Pages.new(@domain, :start => @options[:start], :results => @options[:results])
+        results
       end
       
       def last?
