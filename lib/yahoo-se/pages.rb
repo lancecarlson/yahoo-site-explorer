@@ -29,19 +29,24 @@ module Yahoo
       # Displays the results for pages data
       def results
         raise ApplicationIDNotSet if Yahoo::SE.application_id.nil?
-        @request = Yahoo::SE::Request.new(Yahoo::SE::Pages::SERVICE_PATH, @options)
+        @request = @request ||= Yahoo::SE::Request.new(Yahoo::SE::Pages::SERVICE_PATH, @options)
         @request.results
       end
       
       # The response object from the request
       def response
-        @request.response
+        raise "Must send a request before you can get a response" if @request.nil?
+        @response = @request.response
       end
       
       # Reset the start option to the next results
       def next
-        @options[:start] = @options[:start] + @options[:results]
-        self
+        Yahoo::SE::Pages.new(@domain, :start => (@options[:start] + @options[:results]), :results => @options[:results])
+      end
+      
+      def method_missing(method, *args)
+        results
+        response.send(method, *args)
       end
     end
   end
