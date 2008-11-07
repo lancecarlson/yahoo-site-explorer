@@ -3,7 +3,7 @@ require File.join(File.dirname(__FILE__), "..", "spec_helper")
 describe Yahoo::SE::Pages do
   before do
     @result1 = mock(Yahoo::SE::Result)
-    @response = mock(Yahoo::SE::Response, :total_results => 11)
+    @response = mock(Yahoo::SE::Response, :total_results_available => 120)
     @request = mock(Yahoo::SE::Request, :results => [@result1], :response => @response)
   end
   
@@ -23,14 +23,16 @@ describe Yahoo::SE::Pages do
     Yahoo::SE::Request.should_receive(:new).with("http://search.yahooapis.com/SiteExplorerService/V1/pageData", {:results=>75, :query=>"http://rubyskills.com", :start => 1}).and_return(@request)
     pages = Yahoo::SE.pages("http://rubyskills.com", :results => 75)
     pages.results
-    Yahoo::SE::Pages.should_receive(:new).with("http://rubyskills.com", {:results=>75, :start=>76}).and_return(pages2)
+    pages.last?.should be_false
+    Yahoo::SE::Pages.should_receive(:new).with("http://rubyskills.com", {:results=>44, :start=>76}).and_return(pages2)
     pages.next.should == pages2
+    pages.last?.should be_true
     pages.results
   end
   
   it "should return the total results from the response" do
     Yahoo::SE.application_id = "123"
     Yahoo::SE::Request.should_receive(:new).with("http://search.yahooapis.com/SiteExplorerService/V1/pageData", {:results=>100, :start=>1, :query=>"http://rubyskills.com"}).and_return(@request)
-    Yahoo::SE.pages("http://rubyskills.com", :results => 100).total_results.should == 11
+    Yahoo::SE.pages("http://rubyskills.com", :results => 100).total_results_available.should == 120
   end
 end

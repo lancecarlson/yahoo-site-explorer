@@ -41,7 +41,13 @@ module Yahoo
       
       # Reset the start option to the next results
       def next
-        Yahoo::SE::Pages.new(@domain, :start => (@options[:start] + @options[:results]), :results => @options[:results])
+        @options[:start] = @options[:start] + @options[:results]
+        @options[:results] = response.total_results_available - @options[:start] if last?
+        Yahoo::SE::Pages.new(@domain, :start => @options[:start], :results => @options[:results])
+      end
+      
+      def last?
+        (@options[:start] + @options[:results]) >= response.total_results_available
       end
       
       def method_missing(method, *args)
