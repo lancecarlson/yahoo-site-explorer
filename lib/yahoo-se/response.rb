@@ -6,7 +6,7 @@ module Yahoo
       end
       
       # The number of URLs returned. This may be lower than the number of results requested if there were fewer total results available.
-      def total_results
+      def total_results_available
         self.to_json["ResultSet"]["totalResultsReturned"].to_i
       end
     
@@ -18,8 +18,12 @@ module Yahoo
       # The result objects returned from the request
       def results
         begin
-          self.to_json["ResultSet"]["Result"].map do |result_hash|
-            Yahoo::SE::Result.new(result_hash)
+          if total_results_available == 1
+            [Yahoo::SE::Result.new(self.to_json["ResultSet"]["Result"])]
+          else
+            self.to_json["ResultSet"]["Result"].map do |result_hash|
+              Yahoo::SE::Result.new(result_hash)
+            end
           end
         rescue
           []

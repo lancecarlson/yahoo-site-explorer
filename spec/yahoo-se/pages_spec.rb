@@ -17,7 +17,7 @@ describe Yahoo::SE::Pages do
     it "should list all of the results for a given page request" do
       pages = Yahoo::SE.pages("http://rubyskills.com/contact")
       results = Yahoo::SE.all(pages)
-      results.length.should == 3
+      results.length.should == 1
     end
   end
   
