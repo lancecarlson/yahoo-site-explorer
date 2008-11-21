@@ -15,7 +15,7 @@ module Yahoo
       end
       
       def total_results_available
-        @total_results_available = @total_results_available ||= response.total_results_available
+        @total_results_available ||= response.total_results_available
       end
       
       def last?

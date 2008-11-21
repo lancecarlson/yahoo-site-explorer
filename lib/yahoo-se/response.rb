@@ -27,7 +27,7 @@ module Yahoo
       end
       
       def to_json
-        @json = @json ||= JSON.parse(@body)
+        @json ||= JSON.parse(@body)
       end
     end
   end

@@ -8,4 +8,12 @@ describe Yahoo::SE::Response do
   it "should list 100 result objects" do
     @response.results.size.should equal(100)
   end
+  
+  it "should show the total results return from the request" do
+    @response.total_results.should == 100
+  end
+  
+  it "should show the total results found from Yahoo!" do
+    @response.total_results_available.should == 328
+  end
 end
