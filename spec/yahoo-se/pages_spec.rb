@@ -13,6 +13,12 @@ describe Yahoo::SE::Pages do
       results = Yahoo::SE.all(pages)
       results.length.should == 303
     end
+    
+    it "should list all of the results for a given page request" do
+      pages = Yahoo::SE.pages("http://rubyskills.com/contact")
+      results = Yahoo::SE.all(pages)
+      results.length.should == 3
+    end
   end
   
   it "should have the service path for the pages service" do

@@ -14,10 +14,12 @@ module Yahoo
         
         # First page of results
         results = obj.results
-
-        # The rest of the page results
-        (obj.total_results_available/100).ceil.times do |i|
-          results += obj.next
+        
+        if obj.total_results_available > 100
+          # The rest of the page results
+          (obj.total_results_available/100).ceil.times do |i|
+            results += obj.next
+          end
         end
         results
       end
