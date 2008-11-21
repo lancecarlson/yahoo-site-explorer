@@ -18,7 +18,7 @@ module Yahoo
       attr_reader :request
       attr_accessor :options
       
-      def initialize(domain, options)
+      def initialize(domain, options={})
         @domain = domain
         @options = options
         @options[:query] = domain

@@ -25,12 +25,12 @@ module Yahoo
       
       # The response object of the request
       def response
-        @response = @response ||= Yahoo::SE::Response.new(response_body)
+        @response ||= Yahoo::SE::Response.new(response_body)
       end
       
       # The response body of the request
       def response_body
-        open(path).readlines.join
+        open(path,"User-Agent" => "Ruby/Yahoo Site Explorer Gem v#{Yahoo::SE::VERSION}").readlines.join
       end
       
       # The results from the response object
