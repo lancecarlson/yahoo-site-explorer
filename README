@@ -4,8 +4,6 @@ Yahoo Site Explorer API integration.
 
 == Installation
 
-gem sources -a http://gems.github.com
-
 gem install yahoo-se
 
 == Usage
