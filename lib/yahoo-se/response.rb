@@ -3,10 +3,11 @@ module Yahoo
     class Response
       def initialize(response_body)
         @body = response_body
+        raise RateLimitExceeded unless @body.to_json["Error"].nil?
       end
       
       # The number of URLs returned. This may be lower than the number of results requested if there were fewer total results available.
-      def total_results_available
+      def total_results_returned
         self.to_json["ResultSet"]["totalResultsReturned"].to_i
       end
     

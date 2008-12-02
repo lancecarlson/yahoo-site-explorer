@@ -10,10 +10,14 @@ describe Yahoo::SE::Response do
   end
   
   it "should show the total results return from the request" do
-    @response.total_results.should == 100
+    @response.total_results_returned.should == 100
   end
   
   it "should show the total results found from Yahoo!" do
     @response.total_results_available.should == 328
+  end
+  
+  it "should raise RateLimitExceeded when there are too many requests" do
+    lambda {Yahoo::SE::Response.new(fixture("rate_limit_exceeded.json"))}.should raise_error(Yahoo::SE::RateLimitExceeded)
   end
 end
