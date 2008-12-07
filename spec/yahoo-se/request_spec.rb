@@ -10,6 +10,7 @@ describe Yahoo::SE::Request do
   describe "instances" do
     before do
       Yahoo::SE.application_id = "123"
+      Yahoo::SE::Request.stub!(:hash_to_query).and_return("appid=123&query=http://erbmicha.com&output=json")
       @result = mock(Yahoo::SE::Result)
       @il_request = Yahoo::SE::Request.new(Yahoo::SE::Inlinks::SERVICE_PATH, :query => "http://erbmicha.com")
       @pages_request = Yahoo::SE::Request.new(Yahoo::SE::Pages::SERVICE_PATH, :query => "http://erbmicha.com")
@@ -28,23 +29,23 @@ describe Yahoo::SE::Request do
     
     it "should form a valid request to inlink data" do
       Yahoo::SE::Result.should_receive(:new).exactly(100).times.and_return(@result)
-      @il_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/inlinkData?appid=123&query=http://erbmicha.com&output=json").and_return(@json_bl_file)
+      @il_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/inlinkData?appid=123&query=http://erbmicha.com&output=json", {"User-Agent"=>"Ruby/Yahoo Site Explorer Gem vV1"}).and_return(@json_bl_file)
       @il_request.results.size.should == 100
     end
     
     it "should form a valid request to page data" do
       Yahoo::SE::Result.should_receive(:new).exactly(50).times.and_return(@result)
-      @pages_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/pageData?appid=123&query=http://erbmicha.com&output=json").and_return(@json_pages_file)
+      @pages_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/pageData?appid=123&query=http://erbmicha.com&output=json", {"User-Agent"=>"Ruby/Yahoo Site Explorer Gem vV1"}).and_return(@json_pages_file)
       @pages_request.results.size.should == 50
     end
     
     it "should form a valid request to ping a site" do
-      @ping_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/ping?appid=123&sitemap=http://erbmicha.com&output=json").and_return(@json_ping_file)
+      @ping_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/ping?appid=123&query=http://erbmicha.com&output=json", {"User-Agent"=>"Ruby/Yahoo Site Explorer Gem vV1"}).and_return(@json_ping_file)
       @ping_request.response
     end
     
     it "should form a valid request to the update notification service" do
-      @update_notification_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=123&url=http://erbmicha.com&output=json").and_return(@json_ping_file)
+      @update_notification_request.should_receive("open").with("http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=123&query=http://erbmicha.com&output=json", {"User-Agent"=>"Ruby/Yahoo Site Explorer Gem vV1"}).and_return(@json_ping_file)
       @update_notification_request.response
     end
   end
