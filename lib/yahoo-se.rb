@@ -17,8 +17,14 @@ module Yahoo
         
         if obj.total_results_available > 100
           # The rest of the page results
-          (obj.total_results_available/100).ceil.times do |i|
-            results += obj.next
+          begin
+            (obj.total_results_available/100).ceil.times do |i|
+              results += obj.next
+            end
+          rescue ResponseError => e
+            # error output
+          ensure
+            results
           end
         end
         results
