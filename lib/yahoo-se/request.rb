@@ -30,7 +30,11 @@ module Yahoo
       
       # The response body of the request
       def response_body
-        open(path,"User-Agent" => "Ruby/Yahoo Site Explorer Gem v#{Yahoo::SE::VERSION}").readlines.join
+        begin
+          @response_body = open(path,"User-Agent" => "Ruby/Yahoo Site Explorer Gem v#{Yahoo::SE::VERSION}").readlines.join
+        rescue OpenURI::HTTPError => @errors
+          raise ResponseError, @errors
+        end
       end
       
       # The results from the response object
